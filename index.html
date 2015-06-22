@@ -9,7 +9,7 @@ layout: default
        <button>toggle</button>
      </p> -->
       <div class="post-list-header">
-        Posts
+        文章列表
       </div>
       <div class="post-list-body">
         
@@ -19,7 +19,7 @@ layout: default
               <h2>
               {{ post.title }}
               </h2>
-              <span class="">{{ post.date | date: "%b %-d, %Y" }}</span>
+              <span class="">{{ post.date | date: "%Y-%m-%d" }}</span>
             </a>
           {% endfor %}
         </div>
@@ -33,7 +33,7 @@ layout: default
                     <h2>
                     {{ post.title }}
                     </h2>
-                    <span class="">{{ post.date | date: "%b %-d, %Y" }}</span>
+                    <span class="">{{ post.date | date: "%Y-%m-%d" }}</span>
                   </a>
                 {% endif %}
               {% endfor %}
