@@ -9,7 +9,7 @@ icon: glyphicon-heart
 
 > 2012年毕业 php ios 程序员。   
 
-哈喽
+哈喽，新博客
 
 ---
 
@@ -18,11 +18,6 @@ icon: glyphicon-heart
 * email：[QQ：251040871@qq.com](mailto:{{ site.email }})
 * QQ：251040871
 
----
-
-### 关于本站   
-
-gaochaoyang 博客模板
 ---
 
 只要有空一定会更新的！
