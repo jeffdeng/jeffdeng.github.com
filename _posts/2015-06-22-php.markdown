@@ -52,7 +52,7 @@ tags: [PHP]
 
 打印出来是这样
 
-![camel.jpg](http://www.didibird.com/wp-content/uploads/2015/06/camel.jpg)
+![camel.jpg](/static/img/camel.png)
 
 camel_case对数据进行了递归处理，由于不能对key进行引用改变，只能删除原值，添加新值，这点和C不一样。
 
