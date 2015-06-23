@@ -57,13 +57,18 @@ yum install git
     
     [receive] denyCurrentBranch = false
 
-OK，这样就可以提交到服务器了，但是有个问题，提交了之后服务器没有更新当前版本库。需要设置一个钩子shell
+OK，这样就可以提交到服务器了，但是有个问题，提交了之后服务器没有更新当前版本库。需要设置一个钩子
+shell
 
-    $ cd html/.git//hooks/ $ vim post-receive
+    $ cd html/.git//hooks/ 
+    $ vim post-receive
 
 内容为
 
-    #!/bin/sh cd /var/html || exit unset GIT_DIR git reset —hard
+    #!/bin/sh 
+    cd /var/html || exit
+    unset GIT_DIR 
+    git reset —hard
 
 这里一定要`unset GIT_DIR`，否者不起作用，这样服务器端就自动更新了，刷新你的浏览器就能看的刚刚更新的网站了。
 
