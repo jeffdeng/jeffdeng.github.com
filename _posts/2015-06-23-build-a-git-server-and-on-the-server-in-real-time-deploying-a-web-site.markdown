@@ -32,7 +32,8 @@ yum install git
 
 注意这里不要初始化裸仓库，否者你还得从服务器checkkout出来到web服务器的指定的根目录下：
     
-    $ cd html $ sudo git init
+    $ cd html 
+    $ sudo git init
 
 把owner改为git：
 
