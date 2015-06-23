@@ -19,12 +19,9 @@ JJTableViewCellPic.h
     };
     @class Articles;
     @interface JJTableViewCellPic : UITableViewCell
-    @property (assign, nonatomic) NSNumber *artcicle_id;
-    @property (assign, nonatomic) NSNumber *user_id;
     @property (assign, nonatomic) CGSize   image_size;
     @property (assign, nonatomic) CellType   cell_type;
     @property (strong,nonatomic ) Articles *entity;
-
     @property (strong, nonatomic) UIButton *avatar;
     @property (strong, nonatomic) UILabel *nicknameLable;
     @property (strong, nonatomic) UIImageView *sexImg;
@@ -33,21 +30,16 @@ JJTableViewCellPic.h
     @property (strong, nonatomic) UILabel *contentLable;
     @property (strong, nonatomic) UIImageView *contentImg;
     @property (strong, nonatomic) UILabel *jiongLable;
-    @property (strong, nonatomic) UILabel *commentLable;
-    @property (strong, nonatomic) UIButton *thumbUpBtn;
-    @property (strong, nonatomic) UIButton *thumbDownBtn;
-    @property (strong, nonatomic) UIButton *commentBtn;
-    @property (strong, nonatomic) UIButton *shareBtn;
-
+    ....
     -(void)removeConstraints;
-    - (void)setEntity:(Articles *)entity;
+    -(void)setEntity:(Articles *)entity;
     @end
 
 把界面要显示的控件属性写上，还有模型entity
 
 ### 2.JJTableViewCellPic.m文件部分
 
->*写一个标志didSetupConstraints
+>* 写一个标志didSetupConstraints
 
 记录cell是否添加了约束，防止重复添加，造成约束重复的冲突
 
@@ -64,7 +56,7 @@ override 系统函数 updateConstraints
        [super updateConstraints];
     }
 
->*override updateCellConstraints 和 layoutSubviews
+>* override updateCellConstraints 和 layoutSubviews
 
 在写完自定义的约束后需要主动调用updateCellConstraints去更新约束
 
@@ -86,8 +78,10 @@ override 系统函数 updateConstraints
 
 >* 添加控件约束
 
-添加的约束需要从上至下有关系，不能跳过，不能系统没办法计算高度
+添加的约束需要从上至下有关系，不能跳过，否者系统没办法计算高度
+
 对图片左右约束也要注意，写了图片width和height的约束，就只能设置图片到左边or图片到右边的inset，不能两个都设置，否者会冲突。
+
 对图片也可以不约束width和height用设置左右两边的inset，右边设置relation为`NSLayoutRelationGreaterThanOrEqual` ,保证排版的美观，同时也可以让图片只适应大小
 
     if (self.cell_type==CellTypeText ) {
@@ -117,11 +111,13 @@ override 系统函数 updateConstraints
 >* cell里面的图片占位问题
 
 从网络下载的图片可以从接口里面预先知道size，然后用一个大图裁剪出这个size放上去占着，这样裁剪的或许可以缓存起来，目前还没想到怎么优化这个占位图片。
+
 网络图片一定要用sdImage这种插件类似的，没有缓存的cell会很卡，cell复用可能会图片错位
 
 >* cell的复用问题
 
 主要问题是约束冲突问题，假如你直接从队列里面拿回来的cell进行设置模型，更换数据，非常容易冲突，某些情况下可能不会。
+
 为了防止冲突，首先要去掉上一次加在contentView上的所有约束，假如你还设置了其他约束不是加到父控件的，而是加在本身得，比如图片的宽度和高度，那么也得专门去掉
 
 假如你是用的xib可以跳过本条，xib貌似自动给去掉了还是怎么的，可以直接用
@@ -142,6 +138,7 @@ override 系统函数 updateConstraints
 >* 缓存好计算过的cell高度
 
 把高度缓存到模型里面，模型决定视图
+
     -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
      Articles *article=[_article_arr objectAtIndex:indexPath.row];
