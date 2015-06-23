@@ -169,9 +169,11 @@ override 系统函数 updateConstraints
 代码因为是练手的，PHP后端接口没有上传，目前其他人不能运行demo，可以自己改一下数据源来用
 
 效果1:
+
 ![效果1](/static/img/444.gif)
 
 效果2:
+
 ![效果2](/static/img/555.gif)
 
 [github地址](https://github.com/jeffdeng/jiongjiongyoushen)
