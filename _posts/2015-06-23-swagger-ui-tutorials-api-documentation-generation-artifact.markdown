@@ -6,6 +6,10 @@ categories: app
 excerpt: "swagger ui教程，API文档生成神器"
 ---
 
+* content
+{:toc}
+
+
 [swagger ui](https://github.com/swagger-api/swagger-ui)是一个API在线文档生成和测试的利器，目前发现最好用的。[官方在线demo](http://petstore.swagger.io/)
 
 ![demo-1024x693.jpg](/static/img/demo-1024x693.jpg)
@@ -20,6 +24,8 @@ swagger-ui下载
 
 
     git clone https://github.com/swagger-api/swagger-ui.git
+
+
 下载好之后找到 dist目录，这里面就是我们要用到的，这是官方编译好的，自己就不用去费力搞了。我们做的就是把这个目录重命名叫doc目录，放到网站根目录下。然后把index.html里面这一段的url改为你自己json资源文件输出路径,比如
 
     $(function () {
