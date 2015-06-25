@@ -2,7 +2,7 @@
 layout: post
 title:  "swagger ui教程，API文档生成神器"
 date:   2015-06-23 12:06:59
-categories: app
+categories: 📱app
 excerpt: "swagger ui教程，API文档生成神器"
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title:  "API接口常用的测试+查看利器"
 date:   2015-06-23 12:06:59
-categories: app
+categories: 📱app
 excerpt: "API接口常用的测试+查看利器"
 ---
 

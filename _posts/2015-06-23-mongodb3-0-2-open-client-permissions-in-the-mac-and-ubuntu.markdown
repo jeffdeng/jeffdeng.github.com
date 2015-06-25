@@ -2,7 +2,7 @@
 layout: post
 title:  "mongodb3.0.2 在mac和ubuntu上开启客户端权限过程"
 date:   2015-06-23 12:06:59
-categories: mongodb
+categories: 🍃mongodb
 excerpt: "mongodb3.0.2 在mac和ubuntu上开启客户端权限过程"
 ---
 

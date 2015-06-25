@@ -2,7 +2,7 @@
 layout: post
 title:  "写个正则把mysql表结构提取出来导入mongodb"
 date:   2015-06-23 22:14:54
-categories: mysql
+categories: 🐬mysql
 excerpt: 把部分mysql表结构导入到mongodb
 ---
 

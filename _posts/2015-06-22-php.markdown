@@ -3,7 +3,7 @@ layout: post
 date:   2015-06-22 21:52:45
 title: "PHP实现下划线命名和驼峰法互转"
 description: "PHP实现下划线命名和驼峰法互转"
-categories: PHP
+categories: 🐘php
 tags: [PHP]
 ---
 
