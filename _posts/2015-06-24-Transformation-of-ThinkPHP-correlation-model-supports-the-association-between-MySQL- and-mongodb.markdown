@@ -14,11 +14,8 @@ thinkphp对mongodb的关联模型一点也不支持，mysql和mongodb之间关�
 
 当你想关联两种不同不同数据库查询，或者mongo自身关联查询的时候，只有自己分开写了，非常浪费时间。
 
-laravel目前是支持的，不过thinkphp这种已经3.2这种版本其实已经和laravel5这种框架不是一个时代的
-
-了，很多先进的，或者叫好用的功能还不支持。或许下一个TP会改进，比如容器依赖注入，composer加载的优
-
-化。（目前tp的生态还是很封闭，composer加载的第三方东西对TP可有可无，TP的一切依赖都是自己的）
+laravel目前是支持的
+目前tp的生态还是很封闭，composer加载的第三方东西对TP可有可无，TP的一切依赖都是自己的。
 
 ##重写一个Relation model
 
