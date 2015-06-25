@@ -208,5 +208,18 @@ TP最终开始关联的地方都是在这个函数里面
 
     D('Image')->relationMongo(true)->where($map)->select();
 
+
+实际上 Traint是不支持const的，而relation模型有需要这4个常量
+    
+    const   HAS_ONE     =   1;
+    const   BELONGS_TO  =   2;
+    const   HAS_MANY    =   3;
+    const   MANY_TO_MANY=   4;
+ 
+ >* 我把几个放到了mongo模型的父类里面 `MongoCommonModel`,mysql model就直接集成relation model,否者只能在`use RelationMongoTraint;`同时把上面4个常量在写一遍了。
+
+ >* 另外TP的关联不是lazy load的，10个select关联的也要查询10次，非常不经济。laravel对此做了优化，用in就能实现优化到2次查询。愿意折腾的倒是可以花1小时优化一下。
+
+
 最终文件 [RelationMongoTraint.class.php](http://pan.baidu.com/s/1bn0gpRL)
 
