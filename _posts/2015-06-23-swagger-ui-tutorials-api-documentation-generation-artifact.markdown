@@ -48,7 +48,9 @@ swagger-ui下载
 
 不过用git也是可以的。下载好了就可以用了，把swagger-php放在根目录下，用官方提供的Examples来生成我们的测试json吧。
   
-    cd swagger-php makedir doc php swagger.phar Examples -o doc
+    cd swagger-php
+	makedir doc 
+	php swagger.phar Examples -o doc
 
 OK,现在它就是做了一件事，扫描Examples下面的model还是有controller都生成了前端需要的JSON。现在刷新下`www.1.com/doc/index.html`，就能发现出现了PAI列表了。打开火狐浏览器firebug，会看到operations命名冲突的问题，这个事Examples下面有个文件叫operation.php引起的，删了，然后重新生成json就没问题了。那么开始测试一下API，点击页面try out，没反应？对，在firebug网络面板能看到有网络请求，不过不是当前域名的，是Examples的，以后自己修改Examples的basepath指向我们自己的API就好了。
 
