@@ -61,12 +61,12 @@ OK,现在它就是做了一件事，扫描Examples下面的model还是有control
 比如这个是model类的声明，它的名字叫Pet,model之间还可以相互引用
 
 
-    class Pet { /** * @SWG\Property(name="photoUrls",type="array",@SWG\Items("string")) */ public $photos;
-
-    /**
-    * @SWG\Property(name="tags",type="array",@SWG\Items("Tag"))
-    */
-    public $tags;
+    class Pet { 
+        /** * @SWG\Property(name="photoUrls",type="array",@SWG\Items("string")) */ public $photos;
+        /**
+        * @SWG\Property(name="tags",type="array",@SWG\Items("Tag"))
+      */
+      public $tags;
     }
 
 `@SWG\Items`只有数组才能用。
