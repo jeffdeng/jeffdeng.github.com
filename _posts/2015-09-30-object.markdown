@@ -10,7 +10,6 @@ categories:  🐘php
 {:toc}
 
 ![cxy.png](/static/img/cxy.png)
-![camel.jpg]
 ##序
 > * 代码编写的2个的层次
 > * 面向对象的语言写着面向过程的代码
