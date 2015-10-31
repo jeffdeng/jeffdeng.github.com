@@ -9,7 +9,7 @@ categories:  🐘php
 * content
 {:toc}
 
-![cxy](jeffdeng.github.com/static/img/cxy.png)
+![cxy](/static/img/cxy.png)
 
 ##序
 > * 代码编写的2个的层次
