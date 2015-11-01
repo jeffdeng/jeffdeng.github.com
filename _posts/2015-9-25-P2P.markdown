@@ -2,7 +2,7 @@
 layout: post
 title:  "P2P数据库分析"
 date:   2015-09-25 12:00:00
-categories:  🐘php
+categories: 🐬mysql
 
 ---
 
