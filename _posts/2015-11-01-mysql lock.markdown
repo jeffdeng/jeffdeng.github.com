@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "mysql的乐观锁和悲观锁 手动kill死锁id"
-date:   2015-11-31 12:00:00
+date:   2015-11-01 12:00:00
 categories:  🐬mysql
 
 ---
