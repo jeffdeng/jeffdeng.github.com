@@ -1,0 +1,16 @@
+---
+layout: post
+title:  "homebrew直接用github上的ruby脚本安装"
+date:   2015-12-01 12:00:00
+categories:  🍎mac
+
+---
+
+* content
+{:toc}
+
+
+
+
+
+
