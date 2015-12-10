@@ -1,0 +1,24 @@
+---
+layout: post
+title:  "golang初步学习"
+date:   2015-12-01 12:00:00
+categories:  🐰go
+
+---
+
+* content
+{:toc}
+
+
+###为什么要学习go
+
+### gorountine
+
+###go interface
+
+### go go go 
+
+
+
+
+
