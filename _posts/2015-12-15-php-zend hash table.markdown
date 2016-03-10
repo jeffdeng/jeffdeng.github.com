@@ -25,8 +25,8 @@ PHP的hash table具有如下特点：
 4 key支持混合类型：同时存在关联数组合索引数组
 4 Value支持混合类型：array (“string”,2332)
 5 支持线性遍历：如foreach
-Zend hash table实现了典型的hash表散列结构，同时通过附加一个双向链表，提供了正向、反向遍历数组的功能。其结构如下图：
-![demo-1024x693.jpg](/static/img/demo-1024x693.jpg)
+Zend hash table实现了典型的hash表散列结构，同时通过附加一个双向链表，提供了正向、反向遍历数组的功能。其结构如下图暂无：
+![demo-1024x693.jpg](暂无)
 
 可以看到，在hash table中既有key->value形式的散列结构，也有双向链表模式，使得它能够非常方便的支持快速查找和线性遍历。
 
