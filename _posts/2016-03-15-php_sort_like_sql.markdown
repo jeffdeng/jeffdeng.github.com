@@ -15,21 +15,20 @@ categories:  🐘php
 
 
 php代码如下：
-```
 
  
-  $obj = new stdClass();
-  $obj->status = 4;
-  $obj->last_modified = 11111111;
+    $obj = new stdClass();
+    $obj->status = 4;
+    $obj->last_modified = 11111111;
 
-  $obj2 = new stdClass();
-  $obj2->status = 4;
-  $obj2->last_modified = 22222222;
+    $obj2 = new stdClass();
+    $obj2->status = 4;
+    $obj2->last_modified = 22222222;
 
-  $allBorrow[] = $obj;
-  $allBorrow[] = $obj2;
+    $allBorrow[] = $obj;
+    $allBorrow[] = $obj2;
  
-  usort($allBorrow, function($a,$b){
+    usort($allBorrow, function($a,$b){
         $i1 = array_search($a->status,array(5, 4, 6, 7, 8));
         $i2 = array_search($b->status,array(5, 4, 6, 7, 8));
         if ($i1 == $i2) {
@@ -41,7 +40,6 @@ php代码如下：
             return -1;
         }
      });
-```
 
 解释如下：
 
