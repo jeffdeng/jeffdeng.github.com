@@ -39,10 +39,10 @@ categories:  🐘php
     fclose($handle);
 
 siege 执行成功了6次
-![flock.png](/static/imgflock1.png)
+![flock.png](/static/img/flock1.png)
 
 同时，浏览器也在转圈等待，说明被flock阻塞住了
 查看写入结果 也发现只有等sleep 10秒的执行完了才sleep 1的
-![flock.png](/static/imgflock2.png)
+![flock.png](/static/img/flock2.png)
 
 
