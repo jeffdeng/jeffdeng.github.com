@@ -207,7 +207,8 @@ isChild就是子进程的标志，假如是子进程那么` f := os.NewFile(3, "
 要开箱即用的话，可以用这个`https://github.com/tim1020/godaemon`或者这个`https://github.com/fvbock/endless`，当然明白原理才是最重要的。
 
 
-参考：
+### 参考：
+
 http://my.oschina.net/tim8670/blog/643966
 
 http://grisha.org/blog/2014/06/03/graceful-restart-in-golang/
