@@ -12,7 +12,7 @@ categories:  🐭go
 ## 什么是热重启:
 
 新老程序（进程）无缝替换，同时可以保持对client的服务。让client端感觉不到你的服务挂掉了。
-比如重新加载配置文件，需要重启一下，替换老程序需要重启一下，就需要用到热重启。
+比如重新加载配置文件，需要重启一下，替换老程序需要重启一下，就需要用到热重启。但使用Golang的场景，其实直接在http proxy层面做切流量更方便.
 
 ## 原理
 
@@ -21,7 +21,9 @@ categories:  🐭go
 
 如果收到重启信号，启用新版本的进程 将socket句柄交给新进程，新进程开始接受新连接请求 旧版本服务器停止接受连接，要保持已有的连接，处理完毕后立即停止旧版本服务器,关掉监听（os.Exit(1)）。
 
-## 简化版的重启过程（不处理原有的连接，方便理解关键点）
+## 简化版的重启过程
+
+我这里的代码就不处理原有的连接，方便理解关键点，可以参考其他文章用sync.WaitGroup.wait()来处理这个问题。
 
 ### 生成一个server监听8888端口，然后拦截系统信号，获取监听器
 
@@ -128,6 +130,8 @@ isChild就是子进程的标志，假如是子进程那么` f := os.NewFile(3, "
     }
 
 ### fork子进程
+    
+ `cmd.ExtraFiles = []*os.File{fl}`是实现基础socket服务的关键
 
     func fork() (err error) {
             runningServerReg.Lock()
@@ -196,7 +200,10 @@ isChild就是子进程的标志，假如是子进程那么` f := os.NewFile(3, "
         flag.Parse()
      }
 
-### 源代码已上传：`https://github.com/jeffdeng/gracefullDemo`
+### 源代码已上传
+
+`https://github.com/jeffdeng/gracefullDemo`
+
 要开箱即用的话，可以用这个`https://github.com/tim1020/godaemon`或者这个`https://github.com/fvbock/endless`，当然明白原理才是最重要的。
 
 
