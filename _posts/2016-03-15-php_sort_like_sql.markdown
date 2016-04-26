@@ -6,10 +6,7 @@ categories:  🐘php
 
 ---
 
-* content
-{:toc}
-
-特殊原因，需要合并两张表，然后进行排序，分页，所以有了一下代码
+由于特殊原因，需要合并两张表，然后进行排序，分页，所以有了一下代码
 
 实现效果如SQL :   `'field(status,5,4,6,7,8) ASC,t.last_modified DESC'`
 
