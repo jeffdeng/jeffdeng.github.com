@@ -11,13 +11,13 @@ excerpt: "搭建Git服务器并且在服务器实时部署网站"
 
 最近想要部署一个网站到阿里云上，同步本地git提交到服务器，服务器实时更新。首先搭建服务器，git服务器和客服端就叫git，安装一个就OK了。
 
-####第一步，服务器上安装git：
+#### 第一步，服务器上安装git：
 yum install git
 
-####第二步，服务器上创建一个git用户，用来运行git服务：
+#### 第二步，服务器上创建一个git用户，用来运行git服务：
     $ sudo adduser git
 
-####第三步，创建证书登录：
+#### 第三步，创建证书登录：
 
 在本机上
     $ ssh-keygen -t rsa -C "随便写@suibian.com"
@@ -28,7 +28,7 @@ yum install git
     
     $ id_rsa.pub >> /home/git/.ssh/authorized_keys
 
-####第四步，服务器上初始化Git仓库
+#### 第四步，服务器上初始化Git仓库
 
 注意这里不要初始化裸仓库，否者你还得从服务器checkkout出来到web服务器的指定的根目录下：
     
@@ -39,7 +39,7 @@ yum install git
 
     $ sudo chown -R git:git html
 
-####第五步，服务器上禁用shell登录：
+#### 第五步，服务器上禁用shell登录：
 编辑`/etc/passwd`，找到最后一行
     
     git:x:1001:1001:,,,:/home/git:/bin/bash

@@ -16,7 +16,7 @@ excerpt: "swagger ui教程，API文档生成神器"
 
 有了这个神器，以后就免去和APP前端反复解释字段和写繁琐的文档的痛苦了，从此远离写文档的苦力活，把精力用在该用的地方，不再和安卓和IOS扯蛋蛋。
 
-##1.安装前端
+## 1.安装前端
 
 这个神器分为2部分，前端+服务器端。前端是JS+HTML组成，她负责读取后端生成的JOSN文件来工作。后端可以是任意语言的，可以是PHP JAVA JS ,在这里有介绍，因为我一直用PHP开发就值介绍PHP比较好用的部分。
 
@@ -38,7 +38,7 @@ swagger-ui下载
 
 至于官方的说本地化  `dist/lang: The swagger localization`，官方也没提供样本，第一个JS也不知道哪里去找，将就用英文吧。至此前端部分就搞定了，非常简单，用`www.1.com/doc/index`.html就能访问了因为没有配置后端现在会报错。
 
-##2.安装后端
+## 2.安装后端
 
     git clone https://github.com/zircote/swagger-php.git
 
@@ -73,7 +73,7 @@ OK,现在它就是做了一件事，扫描Examples下面的model还是有control
 
 好了，文档就算完毕了，我们平常做开发的时候只需要把这个两个目录拷过去，把example里面的对象修改为自己就行了。
 
-##3.另外一种用法
+## 3.另外一种用法
 
 这是一种方式，和框架无关的运行方式。还有有一种是集成到现有框架中，不过现在只支持laravel，github上提供了源代码，要是谁又精力+能力可以改一下用到thinkphp中。
 github地址是这个`https://github.com/slampenny/Swaggervel`，不过这个就不能用`git clone`方式去按照了，配置太麻烦，用`composer`吧
@@ -100,7 +100,7 @@ github地址是这个`https://github.com/slampenny/Swaggervel`，不过这个就
 最上面2条就是刚刚添加的路由。
 刷新页面是不是发现空白？要生产json需要你写@SWG的注释，再laravel的app目录下面任何文件写好就可以了，一般我们只需要写model和controller的，这个插件会扫描这个目录生产json文件。
 
-##最后
+## 最后
 
 我已经把demo上传网盘，需要的可以下载使用，laravel的需要自己配置数据库,再laravel下面的.env文件里面， 有什么不明白的可以留言。
 

@@ -8,13 +8,14 @@ categories:  🐘php
 
 * content
 {:toc}
-##序
+
+## 序
 要说PHP最好用的是什么，我肯定说PHP的数组，可以非常方便的组装你想要的数据，然后给模板。
 而PHP的数组的实现方式其实用到了2中简单的数据结构完成的
     1是哈希表
     2是双向链表
 
-##HashTable — PHP最核心数据结构
+## HashTable — PHP最核心数据结构
 
 
 PHP的hash table具有如下特点：
