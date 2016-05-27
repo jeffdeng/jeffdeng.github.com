@@ -11,7 +11,7 @@ categories:  🐧linux
 
 先啰嗦一下几个举例
 
-##Nginx调优举例
+## Nginx调优举例
 
 Nginx调优可以调的参数有很多，常见的参数比如:
 
@@ -27,7 +27,7 @@ Worker Connections ，每个进程允许的最多连接数， 理论上每台ngi
 
 等等这些。
 
-##linux 内核调优举例
+## linux 内核调优举例
 
 linux 默认值 open files 比较小。
     #ulimit -n
@@ -73,7 +73,7 @@ linux 默认值 open files 比较小。
     net.ipv4.tcp_tw_recycle = 1
     fs.file-max = 65000
 
-##调优的正确姿势
+## 调优的正确姿势
 
 网上写调优基本上上都是千篇一律，一堆参数就贴出来了，怎么来的，具体怎么调的，没说
 知道这些参数也有用，但是遇到新问题的时候有些问题还是不好解决的，那么作为一个nginx初学者如何调优呢---压测。
