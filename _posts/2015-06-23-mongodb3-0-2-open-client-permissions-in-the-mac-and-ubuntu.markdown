@@ -9,9 +9,11 @@ excerpt: "mongodb3.0.2 在mac和ubuntu上开启客户端权限过程"
 mongo从2.4以后的版本很多命令发生了变化，网上搜到的教程已经有点落后了，经过看官方文档一番折腾终于配置成功。
 
 ### ubuntu下用apt自动安装
+
 安装完成后系统会生成一个用`service mongodb start`启动的脚本，普通程序用这个没什么问题，但是遇到mongo就比较坑了稍后讲。
 
 ###  mac下安装
+
 `brew install mongodb`
 不过现在提供的最新版是2.6.9的，可以手动去
 `/usr/local/homebrew/Library/Formula/mongodb.rb`
@@ -30,7 +32,7 @@ mongo从2.4以后的版本很多命令发生了变化，网上搜到的教程已
 这样就会导致一个非常让人困惑的低级问题，你用`service mongodb start `启动服务，配置了`user password`，然后用`mongod --config /etc/mongod.conf -auth`，去验证权限始终不成功，因为数据库不在一个地方。
 
 
-##创建一个权限测试用户，命令也变了
+## 创建一个权限测试用户，命令也变了
 
     use amdin db.createUser( {user: "admin",pwd: "admin",roles: [ { role: "userAdminAnyDatabase", db: "admin" } ] })
 
