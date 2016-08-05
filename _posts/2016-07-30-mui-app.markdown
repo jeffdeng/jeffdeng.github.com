@@ -1,0 +1,154 @@
+---
+layout: post
+title:  "说说mui开发hybrid APP"
+date:   2016-07-30 12:00:00
+categories:  app
+
+---
+
+* content
+{:toc}
+
+
+##序言
+ 最近前端发展的越来越猛，手机性能越来越高，电脑配置也越来越高，HTML+CSS+JS由于其灵活性和开发快捷，大概能看出以后移动和PC应用都是JS的天下了。
+
+ mui开发的APP叫hybrid app，不是套一个浏览器壳，访问一个远程M站。这种体验极差，算不上APP,现在也很少了。
+
+##APP端开发的框架-mui介绍
+
+Dcloud出品的mui是H5写界面，然后最终显示在webview里面，而手机设备的功能调用，一般都是通过原生代码才能调用，然后Dcloud开发出了一个JS和原生API的桥接器，html 5 plus，通过这个来实现对系统的二维码，下载 ，录音，录像的操作。
+
+###MUI打开页面的方式和web的区别
+
+MUI打开一个新页面不是web点那种给你个a标签，你去点吧。这种会出现切页手机白背景，体验相当不好。
+Mui对这种切换窗体的行为做了封装，用openWindow来搞定，有很多参数动画可以配置。
+
+    mui.openWindow({
+    url:new-page-url,
+    id:new-page-id,
+    styles:{
+      top:newpage-top-position,//新页面顶部位置
+      bottom:newage-bottom-position,//新页面底部位置
+      width:newpage-width,//新页面宽度，默认为100%
+      height:newpage-height,//新页面高度，默认为100%
+      ......
+    },
+    extras:{
+      .....//自定义扩展参数，可以用来处理页面间传值
+    },
+    createNew:false,//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+    show:{
+      autoShow:true,//页面loaded事件发生后自动显示，默认为true
+      aniShow:animationType,//页面显示动画，默认为”slide-in-right“；
+      duration:animationTime//页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+    },
+    waiting:{
+      autoShow:true,//自动显示等待框，默认为true
+      title:'正在加载...',//等待对话框上显示的提示内容
+      options:{
+        width:waiting-dialog-widht,//等待框背景区域宽度，默认根据内容自动计算合适宽度
+        height:waiting-dialog-height,//等待框背景区域高度，默认根据内容自动计算合适高度
+        ......
+      }
+    }
+    })
+
+###MUI嵌套子页面
+
+你还可以进行webview之间的嵌套，具体有很多技巧可以让APP体验变得非常接近原生APP.
+
+一般MUI在安卓上为了列表页滑动顺畅，会把头部和body作为2个webview分别载入，比如在父页面：
+    
+    mui.init({
+    subpages:[{
+      url:'list.html',
+      id:'list.html',
+      styles:{
+        top:'45px',//mui标题栏默认高度为45px；
+        bottom:'0px'//默认为0px，可不定义；
+      }
+    }]
+     });
+
+这样头部会立即出来，在低端安卓机上，子页面要等一会才能出来，这些都可以优化的。
+
+说个技巧，你可以让父页面的body里面放一个loading动画，然后子页面不通过上面的方式加上，而是先create,在子页面里面监听自己被创建了，就开始请求远程json接口，拿到数据后渲染页面，同时把自己show出来。
+
+这样做同时可以避免IOS上加载子页面迅速加载时闪一下的怪异感。
+    
+    //父页面：
+    var subWebView = plus.webview.create('myTestBank_sub.html','myTestBank_sub.html', {
+            top: '45px',
+            bottom: '0px',
+        });
+     subWebView.hide()
+     plus.webview.currentWebview().append(subWebView);
+
+     //子页面
+    
+     //数据请求完毕才显示
+     ....
+    mui.currentWebview.show('fade-in'); //请求完毕回调显示当前页面，用淡入的方式显示
+
+
+### 不要滥用preload加载页面
+ 
+ 我之前开发的时候为了让页面获得更好的体验，什么体验会好--静态页面秒开，这里不考虑网络情况下。结果我就把所有页面预加载了，结果搞在安卓机上webview不断被重载，搞出个BUG。
+
+ 那么预加载在用在什么地方呢，就是那种会反复使用的页面，比我我最底下的案例，我用在了侧滑页，这个页面被4个页面共同使用，那么我就预加载它并且一直close，只是做个hide，所以打开非常流畅。
+
+ 再来看看普通打开页面的方式
+
+### 正常页面的打开和返回
+
+> * 1.不要用预加载，因为没必要
+
+> * 2.通过extras:{}传递给要打开的页面参数，在mui.plusReady里面接受参数，mui.plusReady只会在页面create的时候触发，预加载的你传这个参数无效。
+
+> * 3.页面返回的时候要close本页面，而不是hide，一是为了节省资源，而是为了接受参数而触发网络请求的逻辑。
+
+> * 4. A 打开 B,B打开C，走到C的时候不要直接用C跳转回A，因为A B 还是show状态，你回到A,再进入B就不会触发mui.plusReady。正确的姿势是close C ,close B,自然就回到A了，也不影响正常页面逻辑。
+
+### 不要引入jquery，用tap而不是click
+ 为了方便操作引入这么大的JQ不值得，尽量用原生JS操作dom,提高性能。
+ tap比click快了300ms，在手机端可以很明显的感觉到反应比较灵敏。
+
+### 数据用vue.js来绑定
+
+ 用vue.js可以实现高效的dom数据更换，数据源一改变，显示就变，非常符合数据和显示分离的一系列思想。也没必要去搞js模板了。
+
+
+### [H5+ API](http://www.dcloud.io/docs/api/index.html)
+
+通过H5+API就可以实现很多普通JS无法办到的事.这个功能倒是和PC端的electron差不多，给你提供一系列原生的API让JS去调用，这样很容易就解决了开发速度和开发成本的问题。一次编写，安卓 IOS都可以用上。迭代速度也可以很快，适合创业公司搞。
+
+而且手机硬件还在继续往上走，webview的性能越来越不是问题，大量应用只是时间早晚的事。
+
+事实上微信 淘宝 支付宝已经有开始这么干了，IOS上对左右滑动没反应的就是webview的。只有从边缘开始才能拖拽一个页面。
+
+要说APP的壳，那么这个H5+ API就是壳。electron就是PC APP的壳。
+ 
+ H5+ API还可以当做SDK嵌入原生APP里面，让原生的做一小部分需要高体验的页面，多数页面用MUI来搞。
+
+
+##我的一个APP
+ 我最近用MUI写了一个APP，真正看API文档熟悉这套东西只用了3天，然后就开始开发，可以看出门槛还是比较低的。
+
+  ![效果](/static/img/ios-mui.gif)
+  
+ 从上面就可以看到效果很不错。页面加载的时候对加载过程做了一定的优化，同时在考虑网络加载的情况下，在小米2S这样的低端机子上也非常好，在中高端安卓就和IOS差不多了。
+
+ 安卓地址: ![demo.apk](/static/img/demo.apk)
+
+
+ IOS的因为没有搞证书，所以就不发了。
+
+ 
+
+
+
+
+
+
+
