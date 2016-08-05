@@ -2,7 +2,7 @@
 layout: post
 title:  "说说mui开发hybrid APP"
 date:   2016-07-30 12:00:00
-categories:  app
+categories: 📱app
 
 ---
 
@@ -13,7 +13,7 @@ categories:  app
 ##序言
  最近前端发展的越来越猛，手机性能越来越高，电脑配置也越来越高，HTML+CSS+JS由于其灵活性和开发快捷，大概能看出以后移动和PC应用都是JS的天下了。
 
- mui开发的APP叫hybrid app，不是套一个浏览器壳，访问一个远程M站。这种体验极差，算不上APP,现在也很少了。
+ mui开发的APP叫hybrid app，不是套一个浏览器壳，访问一个远程M站。这种体验差，算不上APP,现在也很少了。
 
 ##APP端开发的框架-mui介绍
 
@@ -136,7 +136,7 @@ Mui对这种切换窗体的行为做了封装，用openWindow来搞定，有很�
  我最近用MUI写了一个APP，真正看API文档熟悉这套东西只用了3天，然后就开始开发，可以看出门槛还是比较低的。
 
   ![效果](/static/img/ios-mui.gif)
-  
+
  从上面就可以看到效果很不错。页面加载的时候对加载过程做了一定的优化，同时在考虑网络加载的情况下，在小米2S这样的低端机子上也非常好，在中高端安卓就和IOS差不多了。
 
  安卓地址: ![demo.apk](/static/img/demo.apk)
