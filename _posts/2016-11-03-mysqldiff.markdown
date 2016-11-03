@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "比较旧版数据库和新版数据库字段更新，生成上线sql语句"
+title:  "比较旧版数据库和新版数据库字段更新，生成上线sql语句小工具"
 date:   2016-11-03 12:00:00
 categories:  🐘php
 
